@@ -13,10 +13,10 @@ public abstract class Scheduler implements Runnable {
     @Override
     public void run() {
         while (true) {
-            System.out.print(".");
             // take task (policy)
             Optional<Task> next = pollNext();
             if (!next.isPresent()) {
+                System.out.println();
                 System.out.println("All tasks completed. Bye.");
                 return;
             }
@@ -24,7 +24,7 @@ public abstract class Scheduler implements Runnable {
             next.ifPresent(taskQueue::remove);
             next.ifPresent(Task::execute);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

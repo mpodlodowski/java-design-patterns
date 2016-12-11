@@ -14,7 +14,7 @@ public class Task {
     }
 
     public Task(final Runnable runnable) {
-        this(runnable, null);
+        this(runnable, new TaskProperty[0]);
     }
 
     public void execute() {
